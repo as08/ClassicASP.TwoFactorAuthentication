@@ -466,6 +466,11 @@
 		
 			' All parameters have been validated.
 			
+			' Remove any 2FA session if set.
+			
+			If NOT IsEmpty(Session("2FArequired")) Then Session.Contents.Remove("2FArequired")
+			If NOT IsEmpty(Session("2FAenabled")) Then Session.Contents.Remove("2FAenabled")
+			
 			' Generate a random password salt.
 						
 			PasswordSalt = RandomString(32)
@@ -488,12 +493,7 @@
 					False _
 				)_
 			)
-			
-			' Remove any 2FA session if set.
-			
-			If NOT IsEmpty(Session("2FArequired")) Then Session.Contents.Remove("2FArequired")
-			If NOT IsEmpty(Session("2FAenabled")) Then Session.Contents.Remove("2FAenabled")
-			
+						
 			' Log the user in.
 			
 			Session("LoggedIn") = True
