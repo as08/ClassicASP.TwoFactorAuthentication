@@ -55,8 +55,8 @@
 			' Use the AesSha256Secret constant as a pepper.
 			
 			Call Validate.ChangeDataCookieJson(_
-				Array("2FAsecretKey","2FArecoveryPassword","2FArecoveryPasswordSalt"),_
-				Array(Aes.Encrypt(Session("tmp_2FAsecretKey")),Hash(AesSha256Secret & Session("tmp_2FArecoveryPassword") & RecoveryPasswordSalt,"Sha256"),RecoveryPasswordSalt)_
+				Array("2FAsecretKey","2FArecoveryPassword","2FArecoveryPasswordSalt","2FAenabled"),_
+				Array(Aes.Encrypt(Session("tmp_2FAsecretKey")),Hash(AesSha256Secret & Session("tmp_2FArecoveryPassword") & RecoveryPasswordSalt,"Sha256"),RecoveryPasswordSalt,True)_
 			)
 						
 			Session("2FAenabled") = True
