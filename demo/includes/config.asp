@@ -103,6 +103,17 @@
 		
 		Session.Contents.Remove("2FArequired")
 		Session.Contents.Remove("2FAenabled")
+		
+		' RememberMe is removed if you logout.
+		
+		Set Validate = New Validation
+		
+			Call Validate.ChangeDataCookieJson(_
+				Array("RememberMe"),_
+				Array(Null)_
+			)
+		
+		Set Validate = Nothing
 				
 		' Redirect to the homepage.
 		
