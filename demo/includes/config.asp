@@ -104,6 +104,11 @@
 		Session.Contents.Remove("2FArequired")
 		Session.Contents.Remove("2FAenabled")
 		
+		Call Validate.ChangeDataCookieJson(_
+			Array("RememberMe"),_
+			Array(False)_
+		)
+		
 		' The DataCookieJson session is left as is. Just the required
 		' sessions for account access and 2FA validation are removed.
 				
