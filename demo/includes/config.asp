@@ -234,17 +234,17 @@
 		
 		Set Validate = New Validation
 			
+			' Remove all 2FA sessions.
+			
+			Session.Contents.Remove("2FArequired")
+			Session.Contents.Remove("2FAenabled")
+			
 			' Remove the 2FA data from the Data cookie so it isn't re-parsed.
 			
 			Call Validate.ChangeDataCookieJson(_
 				Array("2FAsecretKey","2FArecoveryPassword","2FArecoveryPasswordSalt","2FAenabled"),_
 				Array(Null,Null,Null,False)_
 			)
-			
-			' Remove all 2FA sessions.
-			
-			Session.Contents.Remove("2FArequired")
-			Session.Contents.Remove("2FAenabled")
 			
 			' Redirect to the account page (the user is still logged in).
 			
