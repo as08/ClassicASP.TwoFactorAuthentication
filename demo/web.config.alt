@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <system.webServer>
+    <rewrite>
+        <rules>
+            <clear />
+			<!-- See https://stackoverflow.com/a/53923544/4901783 for an explanation of what this rewrite does -->
+            <!-- "HTTP_COOKIE" must be added to the "allowed server variables" in IIS under URLRewrite -->
+            <rule name="session cookie revert">
+                <match url="(.*)" />
+                <conditions>
+                    <add input="{HTTP_COOKIE}" pattern="(.*)__Secure-session=([0-9a-zA-Z]+)\/([0-9a-zA-Z]+)(.*)" />
+                </conditions>
+                <serverVariables>
+                    <set name="HTTP_COOKIE" value="{C:1}ASPSESSIONID{C:2}={C:3}{C:4}" />
+                </serverVariables>
+                <action type="None" />
+            </rule>
+        </rules>
+        <outboundRules>
+            <rule name="session cookie rewrite">
+                <match serverVariable="RESPONSE_Set_Cookie" pattern="ASPSESSIONID([0-9a-zA-Z]+)=([0-9a-zA-Z]+)(.*)" negate="false" />
+                <!-- Set the session cookie as HttpOnly during the rewrite. Classic ASP doesn't 
+                do this by default, but it's important for preventing XSS cookie stealing. 
+                You could also add "; Secure" if you only want the session cookie to be passed 
+                over an SSL connection, although this also means the cookie can only be set over 
+                an SSL connection too, which could be a problem when testing on localhost. -->
+                <action type="Rewrite" value="__Secure-session={R:1}/{R:2}{R:3}; SameSite=Strict; HttpOnly; Secure" />
+            </rule>     
+        </outboundRules>
+    </rewrite>
+    <httpProtocol>
+      <customHeaders>
+        <add name="X-Frame-Options" value="SAMEORIGIN" />
+		<add name="X-Content-Type-Options" value="nosniff" />
+		<add name="X-XSS-Protection" value="1; mode=block" />
+		<add name="Referrer-Policy" value="strict-origin" />
+        <add name="Strict-Transport-Security" value="max-age=31536000" />
+      </customHeaders>
+    </httpProtocol>
+  </system.webServer>
+</configuration>
