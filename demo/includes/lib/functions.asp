@@ -223,7 +223,7 @@
 		
 		Dim Length, rndChars
 
-    		Length = Len(StrPool)
+		Length = Len(StrPool)
 		
 		Randomize()
 		
@@ -231,7 +231,7 @@
 			rndChars = rndChars & Mid(StrPool,Int(Rnd()*Length+1),1)
 		Next
 
-    		RandomString = rndChars
+		RandomString = rndChars
 		
 	End Function
 	
