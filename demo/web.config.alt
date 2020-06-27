@@ -4,7 +4,7 @@
     <rewrite>
         <rules>
             <clear />
-			<!-- See https://stackoverflow.com/a/53923544/4901783 for an explanation of what this rewrite does -->
+            <!-- See https://stackoverflow.com/a/53923544/4901783 for an explanation of what this rewrite does -->
             <!-- "HTTP_COOKIE" must be added to the "allowed server variables" in IIS under URLRewrite -->
             <rule name="session cookie revert">
                 <match url="(.*)" />
