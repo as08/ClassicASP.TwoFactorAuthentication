@@ -237,8 +237,8 @@
 			' Remove the 2FA data from the Data cookie so it isn't re-parsed.
 			
 			Call Validate.ChangeDataCookieJson(_
-				Array("2FAsecretKey","2FArecoveryPassword","2FArecoveryPasswordSalt"),_
-				Array(Null,Null,Null)_
+				Array("2FAsecretKey","2FArecoveryPassword","2FArecoveryPasswordSalt","2FAenabled"),_
+				Array(Null,Null,Null,False)_
 			)
 			
 			' Remove all 2FA sessions.
