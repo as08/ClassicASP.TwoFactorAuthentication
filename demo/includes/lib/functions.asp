@@ -151,6 +151,8 @@
 		
 	End Function
 	
+	' Check that a token is valid
+	
 	Function ValidToken(ByVal theToken)
 	
 		If Len(Request.Cookies("Token")) = TokenLength*2 AND _
@@ -213,18 +215,15 @@
 		
 	End Function
 	
-	' Generate a random string of letters and numbers.
+	' Generate a random string of letters, numbers and symbols (used for generating password salts).
 	
 	Function RandomString(StrLen)
-    	
-		' The amount of number of in the string pool is doubled.
-		' This is to make sure there's a better mixture of letters and numbers.
-		
+    			
 		Const StrPool = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ12345678901234567890!""#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
 		
 		Dim Length, rndChars
 
-    	Length = Len(StrPool)
+    		Length = Len(StrPool)
 		
 		Randomize()
 		
@@ -232,7 +231,7 @@
 			rndChars = rndChars & Mid(StrPool,Int(Rnd()*Length+1),1)
 		Next
 
-    	RandomString = rndChars
+    		RandomString = rndChars
 		
 	End Function
 	
