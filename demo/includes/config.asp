@@ -103,17 +103,6 @@
 		
 		Session.Contents.Remove("2FArequired")
 		Session.Contents.Remove("2FAenabled")
-		
-		' Remove the remember me value from the DataCookieJson
-		
-		Set Validate = New Validation
-		
-			Call Validate.ChangeDataCookieJson(_
-				Array("RememberMe"),_
-				Array(Null)_
-			)
-		
-		Set Validate = Nothing
 				
 		' Redirect to the homepage.
 		
