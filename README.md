@@ -33,7 +33,7 @@ Run the following command: RegAsm ClassicASP.TwoFactorAuthentication.dll /tlb /c
 
 ## Fully working demo
 
-https://2fa.as08.co.uk/
+### https://2fa.as08.co.uk/
 
 ## Usage
 
