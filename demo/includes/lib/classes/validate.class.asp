@@ -28,7 +28,8 @@
 				"RememberMe",_
 				"2FAsecretKey",_
 				"2FArecoveryPassword",_
-				"2FArecoveryPasswordSalt"_
+				"2FArecoveryPasswordSalt",_
+				"2FAenabled"_
 			)
 		
 		End Sub
