@@ -322,7 +322,7 @@
 		
 		var date = new Date();
 		
-		// date.getUTCMonth() returns a value from 0 - 11 (dunni why) so we need to  + 1
+		// date.getUTCMonth() returns a value from 0 - 11 (dunno why) so we need to  + 1
 		
 		var result = date.getUTCFullYear() + "-" + (date.getUTCMonth() + 1) + "-" + date.getUTCDate() + " " + date.getUTCHours() + ":" + date.getUTCMinutes() + ":" + date.getUTCSeconds();
 		
