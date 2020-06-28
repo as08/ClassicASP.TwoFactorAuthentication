@@ -58,7 +58,7 @@ Run the following command: RegAsm ClassicASP.TwoFactorAuthentication.dll /tlb /c
 		"&chld=H|0" &_
 		"&cht=qr" &_
 		"&chl=" & Server.URLencode("otpauth://totp/user@email.com" &_ 
-		"?secret=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" &_ 
+		"?secret=" & SecretKey &_ 
 		"&issuer=example.com" &_ 
 		"&algorithm=SHA1" &_ 
 		"&digits=6" &_ 
