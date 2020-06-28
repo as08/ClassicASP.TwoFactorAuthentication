@@ -37,6 +37,7 @@ $(function() {
 					$("#success-description").html(data.description);
 				} else {
 					$("#error-message").hide();
+					$("#success-message").hide();
 					location.href = data.redirect;
 				}
 			},
