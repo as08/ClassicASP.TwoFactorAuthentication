@@ -59,6 +59,8 @@
 						
 						End If
 						
+						' Output the redirect JSON.
+						
 						JSON.Write()
 						Response.End()
 					
@@ -66,6 +68,8 @@
 					
 						JSON.Add "error",True
 						JSON.Add "description","Invalid login credentials"
+						
+						' Output the error message.
 						
 						JSON.Write()
 						Response.End()
@@ -78,6 +82,8 @@
 					TOTP = Replace(TOTP," ","")
 					
 					Call Validate.ValidTOTP(TOTP,Request.Form("form-type"))
+					
+					' Validate.ValidTOTP will redirect for us.
 																						
 				ElseIf Request.Form("form-type") = "recover" Then
 										
@@ -96,12 +102,15 @@
 						JSON.Add "error",True
 						JSON.Add "description","Invalid recovery password"
 						
+						' Output the error message.
+						
 						JSON.Write()
 						Response.End()
 						
 					Else
 						
-						' Remove the 2FArequired session and remove the 2FA data from the DataCookieJson.
+						' Remove the 2FA sessions and remove the 2FA data from the DataCookieJson.
+						' Remember, a successful recovery password disables 2FA.
 						
 						Session.Contents.Remove("2FArequired")
 						Session.Contents.Remove("2FAenabled")
@@ -116,11 +125,11 @@
 						' Recovery password match. Log the user in.
 				
 						Session("LoggedIn") = True
-						
-						' Redirect to the account page
-						
+												
 						JSON.Add "error",False
 						JSON.Add "redirect","/account/?recovered=true"
+						
+						' Output the redirect JSON.
 						
 						JSON.Write()
 						Response.End()
