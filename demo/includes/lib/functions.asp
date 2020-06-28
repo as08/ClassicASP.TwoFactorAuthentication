@@ -24,7 +24,7 @@
 		
 		If uCase(Request.ServerVariables("HTTPS")) = "ON" Then
 			
-			CookieStr = CookieStr & "SameSite=Strict; Secure; "
+			CookieStr = CookieStr & "SameSite=Lax; Secure; "
 			
 		End If
 		
