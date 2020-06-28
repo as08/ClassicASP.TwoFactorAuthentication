@@ -59,10 +59,6 @@
 						
 						End If
 						
-						' Output the JSON before calling ChangeDataCookieJson().
-						' ChangeDataCookieJson() will generate a new JSON string,
-						' and we don't want to output that.
-						
 						JSON.Write()
 						Response.End()
 					
