@@ -25,7 +25,7 @@
                 You could also add "; Secure" if you only want the session cookie to be passed 
                 over an SSL connection, although this also means the cookie can only be set over 
                 an SSL connection too, which could be a problem when testing on localhost. -->
-                <action type="Rewrite" value="__Secure-session={R:1}/{R:2}{R:3}; SameSite=Lax; HttpOnly; Secure" />
+                <action type="Rewrite" value="__Secure-session={R:1}/{R:2}{R:3}; SameSite=None; HttpOnly; Secure" />
             </rule>     
         </outboundRules>
     </rewrite>
