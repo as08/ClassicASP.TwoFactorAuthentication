@@ -64,7 +64,6 @@
 						' and we don't want to output that.
 						
 						JSON.Write()
-												
 						Response.End()
 					
 					Else
