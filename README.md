@@ -31,10 +31,6 @@ E.g: cd C:\Windows\Microsoft.NET\Framework64\v4.0.30319
 	
 Run the following command: RegAsm ClassicASP.TwoFactorAuthentication.dll /tlb /codebase
 
-## Fully working demo
-
-### https://2fa.as08.co.uk/
-
 ## Usage
 
 ### Generating a secret key and QR code:
