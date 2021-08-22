@@ -434,7 +434,7 @@
 			IsNull(Session("Password")) OR _ 
 			IsNull(Session("PasswordSalt")) Then Exit Function
 			
-			If StrComp(Session("Email"),Email) = 0 AND _
+			If StrComp(Session("Email"),Email,1) = 0 AND _
 			Hash(AesSha256Secret & Password & Session("PasswordSalt"),"Sha256") = Session("Password") Then
 			
 				' Email and Password match. Log the user in.
