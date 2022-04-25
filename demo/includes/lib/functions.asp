@@ -24,7 +24,7 @@
 		
 		If uCase(Request.ServerVariables("HTTPS")) = "ON" Then
 			
-			CookieStr = CookieStr & "Secure; "
+			CookieStr = CookieStr & "Secure; SameSite=None; "
 			
 		End If
 		
@@ -35,7 +35,7 @@
 		
 		For i = 0 To uBound(NameArray)
 		
-			Response.AddHeader "Set-Cookie",NameArray(i) & "=" & DataArray(i) & "; Path=/; SameSite=None; " & CookieStr & CookieExpires
+			Response.AddHeader "Set-Cookie",NameArray(i) & "=" & DataArray(i) & "; Path=/; " & CookieStr & CookieExpires
 		
 		Next
 		
